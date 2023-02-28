@@ -1,6 +1,9 @@
 pipeline {
      agent any
-     
+     tools {
+        // Install the Maven version configured as "MAVEN3" and add it to the path.
+        maven "MAVEN3"
+    }
      stages {
           stage("Compile") {
                steps {

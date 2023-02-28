@@ -1,0 +1,50 @@
+pipeline {
+     agent any
+     
+     stages {
+          stage("Compile") {
+               steps {
+                    sh "./mvn compile"
+               }
+          }
+          stage("Unit test") {
+               steps {
+                    sh "./mvn test"
+               }
+          }
+          
+          stage("Package") {
+               steps {
+                    sh "./mvn build"
+               }
+          }
+
+          stage("Docker build") {
+               steps {
+                    sh "docker build -t yhlica/mavenproject4docker:${BUILD_TIMESTAMP} ."
+               }
+          }
+
+          stage("Docker login") {
+               steps {
+                    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-hub-credentials',
+                               usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                         sh "docker login --username $USERNAME --password $PASSWORD"
+                    }
+               }
+          }
+
+          stage("Docker push") {
+               steps {
+                    sh "docker push yhlica/mavenproject4docker:${BUILD_TIMESTAMP}"
+               }
+          }
+          
+          stage("Smoke test") {
+              steps {
+                  sleep 60
+                  sh "chmod +x smoke-test.sh && ./smoke-test.sh"
+              }
+          }
+     }
+}

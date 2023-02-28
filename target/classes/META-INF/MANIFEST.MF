@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Built-By: yhli
+Build-Jdk: 17.0.5
+Main-Class: com.centennial.mavenproject4docker.App
+Created-By: Maven Integration for Eclipse
+

@@ -1,5 +1,5 @@
 pipeline {
-     agent { dockerfile true }
+     agent any
      tools {
         // Install the Maven version configured as "MAVEN3" and add it to the path.
         maven "MAVEN3"
@@ -24,7 +24,7 @@ pipeline {
 
           stage("Docker build") {
                steps {
-                    sh "docker build -t mavenproject4docker:${BUILD_TIMESTAMP} ."
+                    sh """docker build -t mavenproject4docker:${BUILD_TIMESTAMP} ."""
                }
           }
 

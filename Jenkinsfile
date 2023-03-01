@@ -3,6 +3,7 @@ pipeline {
      tools {
         // Install the Maven version configured as "MAVEN3" and add it to the path.
         maven "MAVEN3"
+        docker "Docker-4-Jenkins"  
     }
      stages {
           stage("Compile") {

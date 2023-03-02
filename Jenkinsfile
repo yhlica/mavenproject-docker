@@ -5,7 +5,7 @@ pipeline {
         maven "MAVEN3"
     }
      stages {
-          stage("Compile") {
+          stage("Build maven project") {
                steps {
                     sh 'mvn clean install'
                }
@@ -13,12 +13,6 @@ pipeline {
           stage("Unit test") {
                steps {
                     sh "mvn test"
-               }
-          }
-          
-          stage("Package") {
-               steps {
-                    sh "mvn package"
                }
           }
 

@@ -25,7 +25,7 @@ pipeline {
           stage("Docker build") {
                steps {
                         script {
-                                 sh 'docker build -t mavenproject4docker:${BUILD_TIMESTAMP} .'
+                                 sh 'docker build -t mavenproject4dockerv2 .'
                                }
                        }
           }

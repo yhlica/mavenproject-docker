@@ -25,7 +25,7 @@ pipeline {
           stage("Docker build") {
                steps {
                         script {
-                                 sh 'docker build -t mavenproject4dockerv2 .'
+                                 sh 'docker build -t yli202c/repo_4_integration .'
                                }
                        }
           }

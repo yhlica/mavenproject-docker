@@ -2,7 +2,7 @@ pipeline {
      agent any
       environment {
     registry = "yli202c/docker-test"
-    registryCredential = ‘dockerhub’
+   // registryCredential = ‘dockerhub’
       }
      tools {
         // Install the Maven version configured as "MAVEN3" and add it to the path.

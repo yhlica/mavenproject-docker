@@ -19,7 +19,8 @@ pipeline {
           stage("Docker build") {
                steps {
                         script {
-                                 sh 'docker build -t yli202c/mavenproject4docker:1.2 .'
+                                 //sh 'docker build -t yli202c/mavenproject4docker:1.2 .'
+                             docker.build yli202c/mavenproject4docker:1.2
                                }
                        }
           }
